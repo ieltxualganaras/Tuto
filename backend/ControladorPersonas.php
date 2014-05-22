@@ -6,17 +6,11 @@ require './SentenciasDb.php';
  *
  * @author ieltxu
  */
-class ControladorPersonas implements SentenciasDb{
+class ControladorPersonas extends ControladorGeneral implements SentenciasDb{
     
-    private $_ControladorGeneral = null;
-
-    public function __construct() {
-        $this->_ControladorGeneral = new ControladorGeneral();
-    }
-
     public function listar() {
 
-        $statement = $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::BUSCAR_PERSONAS);
+        $statement = $this->ejecutarSentencia(SentenciasDb::BUSCAR_PERSONAS);
         
         $arrayPersonas = $statement->fetchAll(PDO::FETCH_ASSOC);
 
@@ -36,12 +30,12 @@ class ControladorPersonas implements SentenciasDb{
         $parametros = array($nombre,$apellido,$dni);
         
         if($id == 0) {
-        return $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::INSERTAR_PERSONA, $parametros);
+        return $this->ejecutarSentencia(SentenciasDb::INSERTAR_PERSONA, $parametros);
 
         } else {
         $parametros[3] = $id;
 
-        return $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::ACTUALIZAR_PERSONA, $parametros);
+        return $this->ejecutarSentencia(SentenciasDb::ACTUALIZAR_PERSONA, $parametros);
 
         }
     }
@@ -51,7 +45,7 @@ class ControladorPersonas implements SentenciasDb{
         
         $parametros = array($id);
         
-        return $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::BORRAR_PERSONA,$parametros);
+        return $this->ejecutarSentencia(SentenciasDb::BORRAR_PERSONA,$parametros);
     }
     
 }
