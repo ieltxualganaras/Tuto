@@ -25,10 +25,11 @@ class ControladorGeneral {
     
         if($parametros) {
             foreach ($parametros as $key => $parametro) {
-                $statement->bindParam($key + 1, $parametro);
+                
+                $index = $key + 1;
+                $statement->bindValue($index, $parametro);
             }
         }
-
         $statement->execute();
         
         return $statement;

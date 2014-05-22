@@ -39,7 +39,7 @@ class ControladorPersonas implements SentenciasDb{
         return $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::INSERTAR_PERSONA, $parametros);
 
         } else {
-        $parametros[] = $id;
+        $parametros[3] = $id;
 
         return $this->_ControladorGeneral->ejecutarSentencia(SentenciasDb::ACTUALIZAR_PERSONA, $parametros);
 

@@ -5,7 +5,7 @@ $(function() {
     (function(app) {
 
         app.init = function() {
-            alert('Cargando aplicacion');
+            
             app.buscarPersonas();
             app.bindings();
         };
@@ -36,6 +36,10 @@ $(function() {
                 event.preventDefault();
                 app.guardarPersona();
             })
+            
+            $("#formPersona").bootstrapValidator({
+                excluded: [],
+            });
         };
 
         app.guardarPersona = function() {
