@@ -18,7 +18,8 @@ class ConexionDb {
      * 
      * @return PDO
      */
-    public function getConexion() {
+    public function getConexion() { 
         return $this->_conexion;
     }
+    
 }
